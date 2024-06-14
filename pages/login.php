@@ -2,26 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php include "../includes/meta.php"?>
+
     <title>Log-in</title>
 </head>
 
 <body>
+<?php include "../includes/header.php"?>
+<main>
     <div class="container">
         <div class="row mt-5">
             <div class="mx-auto col-5">
-                <form action="" method="POST">
-                    <!-- Email input -->
+                <form action="../controllers/loginController.php" method="POST">
+                    <?php if($_GET['error']):?>
+                    <div class="row mb-2">
+                        <span>Wrong username and/or password</span>
+                    </div>
+                    <?php endif;?>
+                    <!-- Username input -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="email" id="form2Example1" class="form-control" />
-                        <label class="form-label" for="form2Example1">Email address</label>
+                        <input type="text" id="username" name="username" class="form-control" required />
+                        <label class="form-label" for="username">Username</label>
                     </div>
 
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="password" id="form2Example2" class="form-control" />
-                        <label class="form-label" for="form2Example2">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required/>
+                        <label class="form-label" for="password">Password</label>
                     </div>
 
                     <!-- 2 column grid layout for inline styling -->
@@ -53,6 +60,7 @@
             </div>
         </div>
     </div>
+</main>
 </body>
 
 </html>
