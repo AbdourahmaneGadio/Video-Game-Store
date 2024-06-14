@@ -2,16 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php include "../includes/meta.php"?>
+
     <title>Log-in</title>
 </head>
 
 <body>
+<?php include "../includes/header.php"?>
+<main>
     <div class="container">
         <div class="row mt-5">
             <div class="mx-auto col-5">
-                <form action="" method="POST">
+                <form action="../controllers/loginController.php" method="POST">
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4">
                         <input type="email" id="form2Example1" class="form-control" />
@@ -53,6 +55,7 @@
             </div>
         </div>
     </div>
+</main>
 </body>
 
 </html>

@@ -2,16 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <?php include "../includes/meta.php"?>
+
     <title>Admin Panel</title>
 </head>
 
 <body>
+<?php include "../includes/header.php"?>
+
     <main>
         <div class="container">
 
-            <div><a href="update.html">
+            <div><a href="update.php">
                     <button type="button" class="btn btn-primary">Ajouter un jeu</button></a>
             </div>
             <!-- La liste des jeux -->
@@ -37,7 +39,7 @@
             </div>
 
             <!-- Les boutons pour supprimer ou modifier le jeu -->
-            <div><a href="update.html?id=1">
+            <div><a href="update.php?id=1">
                     <button type="button" class="btn btn-primary">Modifier</button></a>
                 <button type="button" class="btn btn-danger">Supprimer</button>
             </div>

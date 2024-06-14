@@ -1,37 +1,21 @@
+<?php require_once "authenticate.php"?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="assets/images/mainLogo.png" type="image/x-icon">
+    <?php include "includes/meta.php"?>
     <title>Video Game Store</title>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body">
-            <div class="container-fluid">
-                <div>
-                    <a href="index.html">
-                        <img src="assets/images/mainLogo.png" style="width: 70px;" alt="Video Game Store">
-                    </a>
-                </div>
-                <div>
-                    <a href="pages/login.html">
-                        <button type="button" class="btn btn-primary">Log in</button></a>
-                    <button type="button" class="btn btn-danger">Logout</button>
-                </div>
-            </div>
-        </nav>
-    </header>
+<?php include "includes/header.php"?>
+
     <main>
         <div class="container p-5">
 
             <!-- La liste des jeux -->
-            <div class="row p-3 rounded bg-info-subtle">
+            <div class="row p-3 rounded bg-info-subtle mb-3">
                 <div id="ligneJeu" class="row">
                     <!-- Les informations du jeu -->
                     <div class="col-3 my-auto">
