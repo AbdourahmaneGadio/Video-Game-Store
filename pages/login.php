@@ -14,16 +14,21 @@
         <div class="row mt-5">
             <div class="mx-auto col-5">
                 <form action="../controllers/loginController.php" method="POST">
-                    <!-- Email input -->
+                    <?php if($_GET['error']):?>
+                    <div class="row mb-2">
+                        <span>Wrong username and/or password</span>
+                    </div>
+                    <?php endif;?>
+                    <!-- Username input -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="email" id="form2Example1" class="form-control" />
-                        <label class="form-label" for="form2Example1">Email address</label>
+                        <input type="text" id="username" name="username" class="form-control" required />
+                        <label class="form-label" for="username">Username</label>
                     </div>
 
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="password" id="form2Example2" class="form-control" />
-                        <label class="form-label" for="form2Example2">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required/>
+                        <label class="form-label" for="password">Password</label>
                     </div>
 
                     <!-- 2 column grid layout for inline styling -->
