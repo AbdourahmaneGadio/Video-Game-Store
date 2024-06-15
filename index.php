@@ -1,7 +1,4 @@
 <?php 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 $ROOT_PATH = "http://localhost/Video-Game-Store";
 require ("authenticate.php"); 
 require_once("controllers/gamesController.php");
