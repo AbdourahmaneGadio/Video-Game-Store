@@ -11,8 +11,6 @@
                 <div>
                     <a href=<?=$ROOT_PATH."/pages/login.php"?>>
                         <?php if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin']) == TRUE):?>
-                            <a href=<?=$ROOT_PATH."/pages/admin.php"?>>
-                            <button type="button" class="btn btn-primary">Administration</button></a>
                             <a href=<?=$ROOT_PATH."/controllers/logoutController.php"?>>
                             <button type="button" class="btn btn-danger">Logout</button></a>
                         <?php else:?>

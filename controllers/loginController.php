@@ -41,7 +41,7 @@ class Login extends Database
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $_POST['username'];
         $_SESSION['id'] = $id;
-        $url = "../pages/admin.php";
+        $url = "../index.php";
         header('Location: ' . $url);
         exit();
       } else {
