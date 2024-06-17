@@ -30,9 +30,11 @@ class Update extends Database
     $video = $_POST['video'];
     $video = $this->convertYouTubeUrlToEmbedCode($video);
     $id = $_POST['gameId'];
+
     // If we changed the visual
     if (isset($_FILES['visual'])) {
-      $visual = $id . "_" . $_FILES["visual"]["name"];
+      $ext = pathinfo($_FILES["visual"]["name"], PATHINFO_EXTENSION);
+      $visual = $id . "." . $ext;
     }
 
     // If the game already exists
@@ -53,7 +55,7 @@ class Update extends Database
     // New game
     else {
 
-      $sql = "INSERT INTO `games` (`visual`, `resume`, `rating`, `year`, `title`, `editor`, `video`) VALUES ('$visual', '$resume', '$rating', '$year', '$title', '$video') ";
+      $sql = "INSERT INTO `games` (`visual`, `resume`, `rating`, `year`, `title`, `editor`, `video`) VALUES ('$visual', '$resume', '$rating', '$year', '$title', '$editor', '$video') ";
       if ($this->conn->query($sql) === TRUE) {
         echo "New record created successfully";
       } else {
@@ -66,7 +68,7 @@ class Update extends Database
     if (isset($_FILES['visual'])) {
 
       $target_dir = "../uploads/games/";
-      $target_file = $target_dir . $id . "_" . basename($_FILES["visual"]["name"]);
+      $target_file = $target_dir . $id . ".". $ext;
 
       if (move_uploaded_file($_FILES["visual"]["tmp_name"], $target_file)) {
         echo "The file " . htmlspecialchars(basename($_FILES["visual"]["name"])) . " has been uploaded.";
@@ -98,6 +100,8 @@ class Update extends Database
 
     return $embedCode;
   }
+
+  
 }
 
 $update = new Update();

@@ -45,7 +45,7 @@ $ratingsLabels = $games->getRatings();
                             <!-- Les informations du jeu -->
                             <div class="col-4">
                                 <input type="hidden" name="gameId" value=<?= $gameId ?>>
-                                <img src=<?= $ROOT_PATH . "/assets/images/games/" . $visual; ?> class="img-fluid" alt="Game's visual">
+                                <img src=<?= $ROOT_PATH . "/uploads/games/" . $visual; ?> class="img-fluid rounded my-2" alt="Game's visual">
                                 <div class="mb-3">
                                     <label for="formFileSm" class="form-label">Small file input example</label>
                                     <input type="file" class="form-control form-control-sm" id="visual" name="visual" accept="image/png, image/jpeg" <?php if(! isset($id)):?> required="true"<?php endif;?>>
@@ -57,15 +57,15 @@ $ratingsLabels = $games->getRatings();
                                 <div class="row">
                                     <div>
                                         <span>Titre du jeu</span>
-                                        <input type="text" class="form-control" name="title" placeholder="Title" <?php if ($title) : ?> value=<?= "$title" ?> <?php endif; ?> required>
+                                        <input type="text" class="form-control" name="title" placeholder="Title" <?php if ($title) : ?> value="<?= htmlspecialchars($title) ?>" <?php endif; ?> required>
                                     </div>
                                     <div>
                                         <span>Editeur</span>
-                                        <input type="text" class="form-control" name="editor" placeholder="Editor" <?php if ($editor) : ?> value=<?= "$editor" ?> <?php endif; ?> required>
+                                        <input type="text" class="form-control" name="editor" placeholder="Editor" <?php if ($editor) : ?> value="<?= htmlspecialchars($editor) ?>" <?php endif; ?> required>
                                     </div>
                                     <div>
                                         <span>Année de parution</span>
-                                        <input type="number" class="form-control" name="year" placeholder="2024" <?php if ($year) : ?> value=<?= $year ?> <?php endif; ?> aria-label="yearOfPublication" aria-describedby="basic-addon1" min="1975" required>
+                                        <input type="number" class="form-control" name="year" placeholder="2024" <?php if ($year) : ?> value="<?= $year ?>" <?php endif; ?> aria-label="yearOfPublication" aria-describedby="basic-addon1" min="1975" required>
                                     </div>
                                     <div>
                                         <span>Résumé</span>
