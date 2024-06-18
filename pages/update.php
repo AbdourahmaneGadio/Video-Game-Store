@@ -83,9 +83,9 @@ $ratingsLabels = $games->getRatings();
                                                 $ratingTitle = $ratingLabel[1];
                                                 if ($ratingTitle == $rating) :
                                             ?>
-                                                    <option value=<?= $ratingId ?> selected><?= $ratingTitle  ?></option>
+                                                    <option value=<?= $ratingTitle ?> selected><?= $ratingTitle  ?></option>
                                                 <?php else : ?>
-                                                    <option value=<?= $ratingId  ?>><?= $ratingTitle ?></option>
+                                                    <option value=<?= $ratingTitle  ?>><?= $ratingTitle ?></option>
                                                 <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>
