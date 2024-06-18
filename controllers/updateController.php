@@ -68,6 +68,12 @@ class Update extends Database
     if (isset($_FILES['visual'])) {
 
       $target_dir = "../uploads/games/";
+      if(! is_dir("../uploads")){
+        mkdir("../uploads", 0777, true);
+      }
+      if(! is_dir($target_dir)){
+        mkdir($target_dir, 0777, true);
+      }
       $target_file = $target_dir . $id . ".". $ext;
 
       if (move_uploaded_file($_FILES["visual"]["tmp_name"], $target_file)) {

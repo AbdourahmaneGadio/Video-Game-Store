@@ -2,7 +2,7 @@
 
 <header>
         <nav class="navbar navbar-expand-lg bg-body">
-            <div class="container-fluid">
+            <div class="container-fluid p-4">
                 <div>
                     <a href=<?=$ROOT_PATH."/index.php"?>>
                         <img src=<?=$ROOT_PATH."/assets/images/mainLogo.png"?> style="width: 70px;" alt="Video Game Store">
