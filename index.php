@@ -25,7 +25,7 @@ $gamesList = $games->getAllGames();
                 </div>
             <?php endif; ?>
             <!-- La liste des jeux -->
-            <?php if (! empty($gamesList)) : ?>
+            <?php if (!empty($gamesList)) : ?>
                 <?php foreach ($gamesList as $game) :
                     $id = $game[0];
                     $visual = $game[1];
@@ -54,7 +54,9 @@ $gamesList = $games->getAllGames();
                                         <p class="lead"><?= $resume ?></p>
                                     </div>
                                     <div class="mt-3">
-                                        <img src=<?= $ROOT_PATH . "/assets/images/pegi/pegi-" . $rating . ".png" ?> class="img-fluid" alt="Rating">
+                                        <div class="col-2">
+                                            <img src=<?= $ROOT_PATH . "/assets/images/pegi/pegi-" . $rating . ".png" ?> class="img-fluid" alt="Rating">
+                                        </div>
                                     </div>
 
 
@@ -100,10 +102,10 @@ $gamesList = $games->getAllGames();
                 <?php endforeach; ?>
 
                 <!-- Si aucun jeu -->
-                 <?php else:?>
-                    <div class="row col-5 m-auto">
-                        <span>Aucun jeu n'est actuellement disponible dans la boutique.</span>
-                    </div>
+            <?php else : ?>
+                <div class="row col-5 m-auto">
+                    <span>Aucun jeu n'est actuellement disponible dans la boutique.</span>
+                </div>
             <?php endif; ?>
 
         </div>
