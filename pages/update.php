@@ -48,7 +48,7 @@ $ratingsLabels = $games->getRatings();
                                 <img src=<?= $ROOT_PATH . "/uploads/games/" . $visual; ?> class="img-fluid rounded my-2" alt="Game's visual">
                                 <div class="mb-3">
                                     <label for="formFileSm" class="form-label">Small file input example</label>
-                                    <input type="file" class="form-control form-control-sm" id="visual" name="visual" accept="image/png, image/jpeg" <?php if(! isset($id)):?> required="true"<?php endif;?>>
+                                    <input type="file" class="form-control form-control-sm" id="visual" name="visual" accept="image/png, image/jpeg" <?php if (!isset($id)) : ?> required="true" <?php endif; ?>>
                                 </div>
 
 
@@ -61,7 +61,22 @@ $ratingsLabels = $games->getRatings();
                                     </div>
                                     <div>
                                         <span>Editeur</span>
-                                        <input type="text" class="form-control" name="editor" placeholder="Editor" <?php if ($editor) : ?> value="<?= htmlspecialchars($editor) ?>" <?php endif; ?> required>
+                                        <select class="form-control mr-sm-2" id="editor">
+                                        <option value="">Editor</option>
+                                        <?php
+                                        $editorsDatabase = $games->getEditors();
+                                        foreach ($editorsDatabase as $editorDatabase) :
+                                            $id = $editorDatabase[0];
+                                            $name = $editorDatabase[1];
+                                        ?>
+                                            <?php if ($editor && $name == $editor) : ?>
+                                                <option name="editor" value=<?= "$id"; ?> selected><?= "$name"; ?></option>
+                                            <?php else : ?>
+                                                <option name="editor" value=<?= "$id"; ?>><?= "$name"; ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                        </select>
+
                                     </div>
                                     <div>
                                         <span>Année de parution</span>
