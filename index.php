@@ -24,6 +24,43 @@ $gamesList = $games->getAllGames();
                         <button type="button" class="btn btn-primary">Ajouter un jeu</button></a>
                 </div>
             <?php endif; ?>
+            <!-- Search Results Modal -->
+            <form class="form-inline my-2 my-lg-0">
+                <select class="form-control mr-sm-2" id="rating">
+                    <option value="">Rating</option>
+                    <?php
+                      $ratings = $games->getRatings();
+                      foreach($ratings as $rating) :
+                        $id = $rating[0];
+                        $name = $rating[1];
+                        ?>
+                        <option value=<?="$id";?>><?="$name";?></option>
+                      
+                    <?php endforeach;?>
+                </select>
+                <select class="form-control mr-sm-2" id="editor">
+                    <option value="">Editor</option>
+                    <?php
+                      $editors = $games->getEditors();
+                      foreach($editors as $editor) :
+                        $id = $editor[0];
+                        $name = $editor[1];
+                        ?>
+                        <option value=<?="$id";?>><?="$name";?></option>
+                        <?php endforeach;?>
+
+                </select>
+                <select class="form-control mr-sm-2" id="year">
+                    <option value="">Year</option>
+                    <?php
+                    for ($year = 1990; $year <= 2020; $year++) {
+                        echo '<option value="' . $year . '">' . $year . '</option>';
+                    }
+                    ?>
+                </select>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
             <!-- La liste des jeux -->
             <?php if (!empty($gamesList)) : ?>
                 <?php foreach ($gamesList as $game) :

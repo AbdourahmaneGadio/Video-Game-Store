@@ -52,5 +52,20 @@ $stmt->bind_param('i',$gameId);
             // $stmt->close();
         }
     } // checkLogin()
+
+    function getEditors()
+    {
+
+        // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
+        if ($stmt = $this->conn->prepare('SELECT * FROM editors')) {
+
+            $stmt->execute();
+
+            $result = $stmt->get_result()->fetch_all();
+            return $result;
+            // $stmt->close();
+        }
+    } // checkLogin()
+
 }
 ?>
