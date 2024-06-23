@@ -23,7 +23,6 @@ class Update extends Database
     // Adding the game into the database
     $title = $_POST['title'];
     $editor = $_POST['editor'];
-    var_dump($editor);
     $year = $_POST['year'];
     $resume = $_POST['resume'];
     $rating = $_POST['rating'];
