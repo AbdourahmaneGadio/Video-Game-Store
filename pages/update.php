@@ -61,7 +61,7 @@ $ratingsLabels = $games->getRatings();
                                     </div>
                                     <div>
                                         <span>Editeur</span>
-                                        <select class="form-control mr-sm-2" id="editor">
+                                        <select class="form-control mr-sm-2" id="editor" name="editor">
                                         <option value="">Editor</option>
                                         <?php
                                         $editorsDatabase = $games->getEditors();
@@ -70,9 +70,9 @@ $ratingsLabels = $games->getRatings();
                                             $name = $editorDatabase[1];
                                         ?>
                                             <?php if ($editor && $name == $editor) : ?>
-                                                <option name="editor" value=<?= "$id"; ?> selected><?= "$name"; ?></option>
+                                                <option value="<?= "$name"; ?>" selected><?= "$name"; ?></option>
                                             <?php else : ?>
-                                                <option name="editor" value=<?= "$id"; ?>><?= "$name"; ?></option>
+                                                <option value="<?= "$name"; ?>"><?= "$name"; ?></option>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                         </select>
@@ -98,9 +98,9 @@ $ratingsLabels = $games->getRatings();
                                                 $ratingTitle = $ratingLabel[1];
                                                 if ($ratingTitle == $rating) :
                                             ?>
-                                                    <option value=<?= $ratingTitle ?> selected><?= $ratingTitle  ?></option>
+                                                    <option value=<?= $ratingId ?> selected><?= $ratingTitle  ?></option>
                                                 <?php else : ?>
-                                                    <option value=<?= $ratingTitle  ?>><?= $ratingTitle ?></option>
+                                                    <option value=<?= $ratingId  ?>><?= $ratingTitle ?></option>
                                                 <?php endif; ?>
                                             <?php endforeach; ?>
                                         </select>

@@ -21,9 +21,9 @@ class Update extends Database
   {
 
     // Adding the game into the database
-
     $title = $_POST['title'];
     $editor = $_POST['editor'];
+    var_dump($editor);
     $year = $_POST['year'];
     $resume = $_POST['resume'];
     $rating = $_POST['rating'];
@@ -32,15 +32,16 @@ class Update extends Database
     $id = $_POST['gameId'];
 
     // If we changed the visual
-    if (isset($_FILES['visual'])) {
+    if (isset($_FILES['visual']) && $id != "") {
       $ext = pathinfo($_FILES["visual"]["name"], PATHINFO_EXTENSION);
-      $visual = $id . "." . $ext;
+      // $visual = $id . "." . $ext;
     }
+    $visual = $_FILES["visual"]["name"];
 
     // If the game already exists
     if ($id != "") {
       $sql = 'UPDATE `games` SET';
-      if (isset($_FILES['visual'])) {
+      if (isset($visual)) {
         $sql .= "`visual`='$visual', ";
       }
 
@@ -65,7 +66,7 @@ class Update extends Database
 
 
     // We move the image
-    if (isset($_FILES['visual'])) {
+    if (isset($visual)) {
 
       $target_dir = "../uploads/games/";
       if(! is_dir("../uploads")){
@@ -74,7 +75,7 @@ class Update extends Database
       if(! is_dir($target_dir)){
         mkdir($target_dir, 0777, true);
       }
-      $target_file = $target_dir . $id . ".". $ext;
+      $target_file = $target_dir . $visual;
 
       if (move_uploaded_file($_FILES["visual"]["tmp_name"], $target_file)) {
         echo "The file " . htmlspecialchars(basename($_FILES["visual"]["name"])) . " has been uploaded.";
