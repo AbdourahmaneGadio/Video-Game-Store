@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row mt-5">
             <div class="mx-auto col-5">
-                <form action="../controllers/loginController.php" method="POST">
+                <form action="<?=$ROOT_PATH . "/controllers/loginController.php"?>" method="POST">
                     <?php if($_GET['error']):?>
                     <div class="row mb-2">
                         <span>Wrong username and/or password</span>
@@ -54,7 +54,7 @@
 
                     <!-- Register buttons -->
                     <div class="text-center">
-                        <p>Not a member? <a href="#!">Register</a></p>
+                        <p>Not a member? <a href=<?=$ROOT_PATH . "/pages/register.php"?>>Register</a></p>
                     </div>
                 </form>
             </div>

@@ -37,7 +37,7 @@ if ($set_vars == false) {
 
     <main>
         <div class="container p-5">
-            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] = TRUE) : ?>
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == TRUE) : ?>
                 <div class="my-3"><a href=<?= $ROOT_PATH . "/pages/update.php" ?>>
                         <button type="button" class="btn btn-primary">Ajouter un jeu</button></a>
                 </div>
@@ -107,7 +107,7 @@ if ($set_vars == false) {
 
                         <!-- Les boutons pour réserver ou retourner un jeu -->
                         <div class="my-2">
-                            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] = TRUE) : ?>
+                            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == TRUE) : ?>
 
                                 <a href=<?= $ROOT_PATH . "/pages/update.php?gameId=" . $id ?>>
                                     <button type="button" class="btn btn-primary">Modifier</button></a>

@@ -62,5 +62,5 @@ $games = new Games();
         <?php endif;?>
 
     </div>
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
 </form>
