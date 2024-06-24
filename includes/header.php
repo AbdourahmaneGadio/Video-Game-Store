@@ -12,6 +12,7 @@
                     <a href=<?=$ROOT_PATH."/pages/login.php"?>>
                         <?php if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin']) == TRUE):?>
                             <a href=<?=$ROOT_PATH."/controllers/logoutController.php"?>>
+                            <span class="fa-light fa-cart-shopping"></span>
                             <button type="button" class="btn btn-danger">Logout</button></a>
                         <?php else:?>
                             <button type="button" class="btn btn-primary">Log in</button></a>

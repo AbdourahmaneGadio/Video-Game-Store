@@ -6,3 +6,4 @@
     <link rel="stylesheet" href=<?=$ROOT_PATH."/assets/css/bootstrap.min.css"?>>
     <link rel="stylesheet" href=<?=$ROOT_PATH."/assets/css/style.css"?>>
     <link rel="shortcut icon" href=<?=$ROOT_PATH."/assets/images/mainLogo.png"?> type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
