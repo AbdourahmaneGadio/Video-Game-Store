@@ -56,7 +56,8 @@ if ($set_vars == false) {
                     $title = $game[5];
                     $editor = $games->getSingleEditor($game[6]);
                     $editor = $editor['name'];
-                    $video = $game[7]
+                    $video = $game[7];
+                    $reservation = $game[8];
                 ?>
                     <div class="row p-3 rounded bg-info-subtle mb-3">
                         <div id="ligneJeu" class="row">
@@ -114,9 +115,10 @@ if ($set_vars == false) {
                                 <a href=<?= "controllers/deleteController.php?gameId=" . $id ?>>
                                     <button type="button" class="btn btn-danger">Supprimer</button></a>
 
-                            <?php else : ?>
-                                <button type="button" class="btn btn-primary">Réserver</button>
+                            <?php elseif ($reservation == 1) : ?>
                                 <button type="button" class="btn btn-primary">Retour</button>
+                                <?php else:?>
+                                <button type="button" class="btn btn-primary">Réserver</button>
 
                             <?php endif; ?>
                         </div>
