@@ -70,9 +70,9 @@ $ratingsLabels = $games->getRatings();
                                             $name = $editorDatabase[1];
                                         ?>
                                             <?php if ($editor && $name == $editor) : ?>
-                                                <option value="<?= "$name"; ?>" selected><?= "$name"; ?></option>
+                                                <option value="<?= "$id"; ?>" selected><?= "$name"; ?></option>
                                             <?php else : ?>
-                                                <option value="<?= "$name"; ?>"><?= "$name"; ?></option>
+                                                <option value="<?= "$id"; ?>"><?= "$name"; ?></option>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                         </select>

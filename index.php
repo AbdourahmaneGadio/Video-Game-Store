@@ -54,7 +54,8 @@ if ($set_vars == false) {
                     $rating = $game[3];
                     $year = $game[4];
                     $title = $game[5];
-                    $editor = $game[6];
+                    $editor = $games->getSingleEditor($game[6]);
+                    $editor = $editor['name'];
                     $video = $game[7]
                 ?>
                     <div class="row p-3 rounded bg-info-subtle mb-3">
