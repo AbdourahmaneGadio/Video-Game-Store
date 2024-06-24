@@ -36,8 +36,8 @@
                         <div class="col d-flex justify-content-center">
                             <!-- Checkbox -->
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                                <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                <input class="form-check-input" type="checkbox" id="rememberme" name="rememberme" checked />
+                                <label class="form-check-label" for="rememberme"> Remember me </label>
                             </div>
                         </div>
 

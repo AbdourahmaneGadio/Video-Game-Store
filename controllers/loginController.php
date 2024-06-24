@@ -43,6 +43,10 @@ class Login extends Database
         $_SESSION['admin'] = $userStatut == "admin";
         $_SESSION['name'] = $username;
         $_SESSION['id'] = $id;
+
+        if (isset($_GET['rememberme']) && $_GET['rememberme'] == true){
+          setcookie ("user_login",$username,time()+ (10 * 365 * 24 * 60 * 60));
+        }
         $url = "../index.php";
         header('Location: ' . $url);
         exit();
