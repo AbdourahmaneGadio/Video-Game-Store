@@ -3,6 +3,7 @@
 
 require("../authenticate.php");
 
+
 class Login extends Database
 {
   private $conn;
@@ -44,8 +45,10 @@ class Login extends Database
         $_SESSION['name'] = $username;
         $_SESSION['id'] = $id;
 
-        if (isset($_GET['rememberme']) && $_GET['rememberme'] == true){
-          setcookie ("user_login",$username,time()+ (10 * 365 * 24 * 60 * 60));
+        if (isset($_POST['rememberme']) && $_POST['rememberme'] == "on"){
+          setcookie ("user_login",$username,time()+ (10 * 365 * 24 * 60 * 60), "/");
+          setcookie ("user_statut",$userStatut,time()+ (10 * 365 * 24 * 60 * 60), "/");
+          setcookie ("user_id",$id,time()+ (10 * 365 * 24 * 60 * 60), "/");
         }
         $url = "../index.php";
         header('Location: ' . $url);

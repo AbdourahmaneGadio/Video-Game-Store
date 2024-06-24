@@ -1,25 +1,33 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 $ROOT_PATH = "http://localhost/Video-Game-Store";
 require("authenticate.php");
 require_once("controllers/gamesController.php");
 $games = new Games();
+
+// If rememberme checked
+if ($_SESSION['loggedin'] == false) {
+    if (isset($_COOKIE['user_login']) && $_COOKIE['user_login'] != "") {
+        $_SESSION['loggedin'] = TRUE;
+        $_SESSION['name'] = $_COOKIE['user_login'];
+        $_SESSION['admin'] = $_COOKIE['user_statut'];
+        $_SESSION['id'] = $_COOKIE['user_id'];
+    }
+}
+
 $get_vars = array('rating', 'year', 'editor', 'name');
 
 $set_vars = false;
 
 foreach ($get_vars as $var) {
     if (isset($_GET[$var])) {
-        $set_vars=true;
-       $gamesList=$games->searchGame();
+        $set_vars = true;
+        $gamesList = $games->searchGame();
         break;
     }
 }
 
 if ($set_vars == false) {
-   $gamesList=$games->getAllGames();
+    $gamesList = $games->getAllGames();
 }
 
 ?>
@@ -117,7 +125,7 @@ if ($set_vars == false) {
 
                             <?php elseif ($reservation == 1) : ?>
                                 <button type="button" class="btn btn-primary">Retour</button>
-                                <?php else:?>
+                            <?php else : ?>
                                 <button type="button" class="btn btn-primary">Réserver</button>
 
                             <?php endif; ?>

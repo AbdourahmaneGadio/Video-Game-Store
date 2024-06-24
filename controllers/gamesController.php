@@ -114,6 +114,6 @@ class Games extends Database
             return $result;
             // $stmt->close();
         }
-    }
+    } // searchGame()
 }
 ?>
