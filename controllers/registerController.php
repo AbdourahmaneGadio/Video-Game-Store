@@ -1,8 +1,6 @@
 
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+
 
 require("../authenticate.php");
 
@@ -41,9 +39,17 @@ class Register extends Database
         // Verification success! User has logged-in!
         // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
         session_regenerate_id();
+
+        $stmt = $this->conn->prepare('SELECT id FROM users WHERE username = ?');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $id = $result['id'];
+
         $_SESSION['loggedin'] = TRUE;
-        $_SESSION['name'] = $_POST['username'];
-        // $_SESSION['id'] = $id;
+        $_SESSION['admin'] = "user";
+        $_SESSION['name'] = $username;
+        $_SESSION['id'] = $id;
         $url = "../index.php";
         header('Location: ' . $url);
         exit();
