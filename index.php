@@ -45,11 +45,6 @@ if ($set_vars == false) {
 
     <main>
         <div class="container p-5">
-            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == TRUE) : ?>
-                <div class="my-3"><a href=<?= $ROOT_PATH . "/pages/update.php" ?>>
-                        <button type="button" class="btn btn-primary">Ajouter un jeu</button></a>
-                </div>
-            <?php endif; ?>
             <!-- Search Results Modal -->
             <?php include "includes/searchBar.php" ?>
 

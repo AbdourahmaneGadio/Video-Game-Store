@@ -1,2 +1,5 @@
 # Images of the games
 uploads/
+
+# Database connection
+authenticate.php
