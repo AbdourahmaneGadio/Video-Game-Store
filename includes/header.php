@@ -28,8 +28,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Add editor</a></li>
-                                    <li><a class="dropdown-item" href="#">Manage users</a></li>
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/addEditor.php" ?>>Add editor</a></li>
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userList.php" ?>>Manage users</a></li>
+                                    <li> <a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/update.php" ?>>Add a game</a></li>
                                 </ul>
                             </li>
                         <?php endif; ?>
