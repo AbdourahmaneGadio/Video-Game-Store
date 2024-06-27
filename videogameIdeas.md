@@ -4,7 +4,7 @@ User Functionalities:
 
 1. **Browse and Search Games**:
    - Allow users to browse through the available video games by categories, genres, platforms, etc.
-   - Provide a search functionality to let users search for specific games by title, developer, release year, etc.
+   - ~~Provide a search functionality to let users search for specific games by title, developer, release year, etc.~~ 
 
 2. **Game Details and Availability**:
    - Display detailed information about each game, including screenshots, trailers, descriptions, ratings, and reviews.
@@ -15,7 +15,7 @@ User Functionalities:
    - Allow users to return rented games and track their rental history.
 
 4. **User Accounts and Profiles**:
-   - Provide user registration and login functionality.
+   - ~~Provide user registration and login functionality.~~
    - Allow users to manage their account information, rental history, and payment methods.
    - Implement features like wish lists, game recommendations, and rental reminders.
 
@@ -30,7 +30,7 @@ User Functionalities:
 Administrator Functionalities:
 
 1. **Inventory Management**:
-   - Allow administrators to add, update, and remove video game listings.
+   - ~~Allow administrators to add, update, and remove video game listings.~~
    - Manage the availability and stock levels of each game.
    - Track rental history and game return status.
 
