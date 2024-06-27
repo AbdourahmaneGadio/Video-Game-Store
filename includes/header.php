@@ -16,11 +16,11 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <?php if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin']) == TRUE) : ?>
                         <?php if ($_SESSION['admin'] == FALSE) : ?>
-                            <li class="nav-item">
+                            <li class="nav-item my-auto">
                                 <span class="fa-light fa-cart-shopping"></span>
                             </li>
                         <?php endif; ?>
-                        <span>Welcome <?= $_SESSION['name'] ?> !</span>
+                        <span class="mx-2 my-auto">Welcome <?= $_SESSION['name'] ?> !</span>
                         <?php if ($_SESSION['admin'] == TRUE) : ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

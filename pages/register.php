@@ -15,8 +15,8 @@
             <div class="mx-auto col-5">
                 <form action="<?=$ROOT_PATH . "/controllers/registerController.php"?>" method="POST">
                 <?php if($_GET['error']):?>
-                    <div class="row mb-2">
-                        <span>Username already taken</span>
+                    <div class="alert alert-danger" role="alert">
+                    <span>User name already taken</span>
                     </div>
                     <?php endif;?>    
                 <!-- Username input -->
