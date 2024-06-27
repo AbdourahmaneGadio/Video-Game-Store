@@ -12,8 +12,8 @@ class Database
 	{
 		// Change this to your connection info.
 		$DATABASE_HOST = 'localhost';
-		$DATABASE_USER = 'root';
-		$DATABASE_PASS = 'root';
+		$DATABASE_USER = 'Ouatson';
+		$DATABASE_PASS = 'Passer321';
 		$DATABASE_NAME = 'videogamestore';
 		// Try and connect using the info above.
 		$conn = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
