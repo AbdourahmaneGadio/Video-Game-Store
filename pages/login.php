@@ -15,8 +15,8 @@
             <div class="mx-auto col-5">
                 <form action="<?=$ROOT_PATH . "/controllers/loginController.php"?>" method="POST">
                     <?php if($_GET['error']):?>
-                    <div class="row mb-2">
-                        <span>Wrong username and/or password</span>
+                    <div class="alert alert-danger" role="alert">
+                    <span>Wrong username and/or password</span>
                     </div>
                     <?php endif;?>
                     <!-- Username input -->

@@ -120,9 +120,8 @@ if ($set_vars == false) {
 
                                 <a href=<?= $ROOT_PATH . "/pages/update.php?gameId=" . $id ?>>
                                     <button type="button" class="btn btn-primary">Modifier</button></a>
-                                <a href=<?= "controllers/deleteController.php?gameId=" . $id ?>>
-                                    <button type="button" class="btn btn-danger">Supprimer</button></a>
-
+                                <a href=<?= $ROOT_PATH ."/controllers/deleteController.php?gameId=" . $id ?>>
+                                    <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
                             <?php elseif ($reservation == 1) : ?>
                                 <button type="button" class="btn btn-primary">Retour</button>
                             <?php else : ?>
@@ -135,13 +134,15 @@ if ($set_vars == false) {
 
                 <!-- Si aucun jeu -->
             <?php else : ?>
-                <div class="row col-5 m-auto">
-                    <span>Aucun jeu n'est actuellement disponible dans la boutique.</span>
+                <div class="alert alert-info" role="alert">
+                <span>Aucun jeu n'est actuellement disponible dans la boutique.</span>
                 </div>
             <?php endif; ?>
 
         </div>
     </main>
+    <?php include "includes/footer.php" ?>
+
 </body>
 
 </html>
