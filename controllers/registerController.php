@@ -47,7 +47,7 @@ class Register extends Database
         $id = $result['id'];
 
         $_SESSION['loggedin'] = TRUE;
-        $_SESSION['admin'] = "user";
+        $_SESSION['admin'] = FALSE;
         $_SESSION['name'] = $username;
         $_SESSION['id'] = $id;
         $url = "../index.php";
