@@ -33,6 +33,17 @@
                                     <li> <a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/update.php" ?>>Add a game</a></li>
                                 </ul>
                             </li>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Settings
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userInformation.php" ?>>Account information</a></li>
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userRental.php" ?>>Rental history</a></li>
+                                </ul>
+                            </li>
                         <?php endif; ?>
                         <li class="nav-item">
                             <a href=<?= $ROOT_PATH . "/controllers/logoutController.php" ?>>

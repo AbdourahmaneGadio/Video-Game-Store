@@ -85,7 +85,7 @@ User Functionalities:
 
 4. **User Accounts and Profiles**:
    - ~~Provide user registration and login functionality.~~
-   - Allow users to manage their account information, rental history, and payment methods.
+   - Allow users to manage their ~~account information,~~ rental history, and payment methods.
    - Implement features like wish lists, game recommendations, and rental reminders.
 
 5. **Ratings and Reviews**:
