@@ -130,7 +130,7 @@ if ($set_vars == false) {
                 <!-- Si aucun jeu -->
             <?php else : ?>
                 <div class="alert alert-info" role="alert">
-                <span>Aucun jeu n'est actuellement disponible dans la boutique.</span>
+                <span>No games found</span>
                 </div>
             <?php endif; ?>
 
