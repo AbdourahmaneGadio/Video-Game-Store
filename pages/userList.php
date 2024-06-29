@@ -33,8 +33,14 @@ $usersDatabase = $userObject->getAllUsers();
                             <div> <span>Created the <?= $dateOfCreation ?></span></div>
                             <div> <span>Statut : <?= $statut ?></span></div>
 
-                            <div> <button type="button" class="btn btn-primary">Modifier</button>
-                             <button type="button" class="btn btn-danger">Supprimer</button></div>
+                            <div> 
+                                <a href="">
+                                    <button type="button" class="btn btn-primary">Modifier</button>
+                                </a>
+                                <a href=""> 
+                                    <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
