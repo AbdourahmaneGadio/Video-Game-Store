@@ -62,19 +62,19 @@ $ratingsLabels = $games->getRatings();
                                     <div>
                                         <span>Editeur</span>
                                         <select class="form-control mr-sm-2" id="editor" name="editor">
-                                        <option value="">Editor</option>
-                                        <?php
-                                        $editorsDatabase = $games->getEditors();
-                                        foreach ($editorsDatabase as $editorDatabase) :
-                                            $id = $editorDatabase[0];
-                                            $name = $editorDatabase[1];
-                                        ?>
-                                            <?php if ($editor && $name == $editor) : ?>
-                                                <option value="<?= "$id"; ?>" selected><?= "$name"; ?></option>
-                                            <?php else : ?>
-                                                <option value="<?= "$id"; ?>"><?= "$name"; ?></option>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
+                                            <option value="">Editor</option>
+                                            <?php
+                                            $editorsDatabase = $games->getEditors();
+                                            foreach ($editorsDatabase as $editorDatabase) :
+                                                $id = $editorDatabase[0];
+                                                $name = $editorDatabase[1];
+                                            ?>
+                                                <?php if ($editor && $name == $editor) : ?>
+                                                    <option value="<?= "$id"; ?>" selected><?= "$name"; ?></option>
+                                                <?php else : ?>
+                                                    <option value="<?= "$id"; ?>"><?= "$name"; ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
                                         </select>
 
                                     </div>
@@ -125,7 +125,8 @@ $ratingsLabels = $games->getRatings();
                 </div>
             </div>
         </div>
-    </main>
+    </main> 
+    <?php include "../includes/footer.php" ?>
 </body>
 
 </html>

@@ -50,7 +50,8 @@ if (isset($_POST['registerButton'])) {
                 </div>
             </div>
         </div>
-    </main>
+    </main>    
+    <?php include "../includes/footer.php" ?>
 </body>
 
 </html>
