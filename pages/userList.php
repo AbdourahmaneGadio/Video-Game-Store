@@ -1,5 +1,8 @@
-<?php 
+<?php
 require_once("../authenticate.php");
+require_once("../controllers/userController.php");
+$userObject = new User();
+$usersDatabase = $userObject->getAllUsers();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,15 +17,28 @@ require_once("../authenticate.php");
     <?php include "../includes/header.php" ?>
     <main>
         <div class="container">
-            <div class="row mt-5">
-                    <span>User 1</span>
-                    <span>Created the 01-01-2024</span>
-                    <span>Statut : Client</span>
-               
-                    <button type="button" class="btn btn-primary">Modifier</button>
-                    <button type="button" class="btn btn-danger">Supprimer</button>
-                </div>
-            </div>
+            <!-- La liste des utilisateurs -->
+            <?php if (!empty($usersDatabase)) : ?>
+                <?php foreach ($usersDatabase as $user) :
+                    $id = $user[0];
+                    $username = $user[1];
+                    $dateOfCreation = $user[3];
+                    $statut = $user[4];
+                ?>
+                    <div class="row mt-5">
+                        <div class="col-5 mx-auto">
+                            <div>
+                                <span><?= $username ?></span>
+                            </div>
+                            <div> <span>Created the <?= $dateOfCreation ?></span></div>
+                            <div> <span>Statut : <?= $statut ?></span></div>
+
+                            <div> <button type="button" class="btn btn-primary">Modifier</button>
+                             <button type="button" class="btn btn-danger">Supprimer</button></div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </main>
     <?php include "../includes/footer.php" ?>
