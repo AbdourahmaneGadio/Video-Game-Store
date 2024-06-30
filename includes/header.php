@@ -17,7 +17,10 @@
                     <?php if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin']) == TRUE) : ?>
                         <?php if ($_SESSION['admin'] == FALSE) : ?>
                             <li class="nav-item my-auto">
-                                <span class="fa-light fa-cart-shopping"></span>
+                            <a href=<?= $ROOT_PATH . "/pages/cartList.php" ?>>
+                                <span>Voir le panier</span>
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </a>
                             </li>
                         <?php endif; ?>
                         <span class="mx-2 my-auto">Welcome <?= $_SESSION['name'] ?> !</span>

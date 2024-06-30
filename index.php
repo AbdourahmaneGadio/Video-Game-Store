@@ -2,10 +2,13 @@
 $ROOT_PATH = "http://localhost/Video-Game-Store";
 require("authenticate.php");
 require_once("controllers/gamesController.php");
+require_once("controllers/cartController.php");
+
 $games = new Games();
+$cart = new Cart();
 
 // If rememberme checked
-if ($_SESSION['loggedin'] == false) {
+if (isset($_SESSION['loggedin']) &&  $_SESSION['loggedin'] == false) {
     if (isset($_COOKIE['user_login']) && $_COOKIE['user_login'] != "") {
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $_COOKIE['user_login'];
@@ -35,8 +38,11 @@ if ($set_vars == false) {
 }
 
 // If we want to add a game
-if (isset($_GET['addGameToCart']) && isset($_GET['gameId'])){
-    $games->addGameToCart($_GET['gameId']);
+if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
+    $cart->addGameToCart();
+    unset($_POST['addGameToCart']);
+    unset($_POST['gameId']);
+    unset($_POST['price']);
 }
 
 ?>
@@ -81,7 +87,7 @@ if (isset($_GET['addGameToCart']) && isset($_GET['gameId'])){
                             <div class="col-6">
                                 <div class="row">
                                     <div>
-                                        <span class="display-6"><?= $title . " - " . $price . "$";?></span>
+                                        <span class="display-6"><?= $title . " - " . $price . "$"; ?></span>
                                     </div>
                                     <div class="my-2"> <span class="text-body-secondary"><?= $editor ?></span> <span> - </span>
                                         <span class="text-body-secondary"><?= $year ?></span>
@@ -130,10 +136,13 @@ if (isset($_GET['addGameToCart']) && isset($_GET['gameId'])){
                                         <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
                                 <?php elseif ($reservation == 1) : ?>
                                     <button type="button" class="btn btn-primary">Jeu déjà réservé</button>
+                                <?php elseif (isset($_SESSION['loggedin']) && $cart->gameAlreadyCart($id) == false) : ?>
+                                    <button type="submit" name="addGameToCart" class="btn btn-primary">Réserver</button>
+                                    <input type="hidden" name="gameId" value="<?= $id ?>">
+                                    <input type="hidden" name="price" value="<?= $price ?>">
                                 <?php else : ?>
-                                    <a href=<?= "?addGameToCart=1&gameId=" . $id ?>>
-                                    <button type="button" name="addGameToCart" class="btn btn-primary">Réserver</button>
-                                    </a>
+                                    <button type="button" class="btn btn-primary opacity-25" disabled>Réserver</button>
+
                                 <?php endif; ?>
                             </form>
                         </div>

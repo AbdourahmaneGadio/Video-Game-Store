@@ -80,7 +80,7 @@ User Functionalities:
    - Show the availability status of each game (in-stock, rented out, etc.) and the rental price.
 
 3. **Rent and Return Games**:
-   - Enable users to rent video games by adding them to a cart and completing the rental process.
+   - Enable users to rent video games by ~~adding them to a cart~~ and completing the rental process.
    - Allow users to return rented games and track their rental history.
 
 4. **User Accounts and Profiles**:

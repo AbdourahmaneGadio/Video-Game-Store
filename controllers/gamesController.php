@@ -116,10 +116,5 @@ class Games extends Database
             // $stmt->close();
         }
     } // searchGame()
-
-    function addGameToCart($gameId)
-    {
-
-    } // checkLogin()
 }
 ?>
