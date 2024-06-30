@@ -12,6 +12,7 @@ class Games extends Database
     {
         $this->conn = $this->connect();
     }
+
     function getAllGames()
     {
 
@@ -115,5 +116,10 @@ class Games extends Database
             // $stmt->close();
         }
     } // searchGame()
+
+    function addGameToCart($gameId)
+    {
+
+    } // checkLogin()
 }
 ?>
