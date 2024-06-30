@@ -1,9 +1,9 @@
 <?php
 include "../controllers/registerController.php";
 
-if (isset($_POST['registerButton'])) {
+if (isset($_POST['updateAccount'])) {
     $register = new Register();
-    $register->createAccount();
+    $register->updateAccount();
 }
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ if (isset($_POST['registerButton'])) {
 <head>
     <?php include "../includes/meta.php" ?>
 
-    <title>Register</title>
+    <title>User information</title>
 </head>
 
 <body>
@@ -25,6 +25,11 @@ if (isset($_POST['registerButton'])) {
                         <?php if (isset($_GET['error'])) : ?>
                             <div class="alert alert-danger" role="alert">
                                 <span>Username already taken</span>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (isset($_GET['success'])) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <span>Information updated successfully !</span>
                             </div>
                         <?php endif; ?>
                         <!-- Username input -->
@@ -40,18 +45,14 @@ if (isset($_POST['registerButton'])) {
                         </div>
 
                         <!-- Submit button -->
-                        <button type="submit" name="registerButton" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Register</button>
-
-                        <!-- Login buttons -->
-                        <div class="text-center">
-                            <p>Already a member? <a href=<?= $ROOT_PATH . "/pages/login.php" ?>>Log-in</a></p>
-                        </div>
+                        <button type="submit" name="updateAccount" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Update information</button>
                     </form>
                 </div>
             </div>
         </div>
-    </main>    
+    </main>
     <?php include "../includes/footer.php" ?>
+
 </body>
 
 </html>

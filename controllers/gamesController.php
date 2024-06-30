@@ -12,6 +12,7 @@ class Games extends Database
     {
         $this->conn = $this->connect();
     }
+
     function getAllGames()
     {
 

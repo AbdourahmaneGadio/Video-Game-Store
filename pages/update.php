@@ -16,6 +16,7 @@ if ($_GET['gameId'] != "") {
     $title = $singleGame['title'];
     $editor = $singleGame['editor'];
     $video = $singleGame['video'];
+    $price = $singleGame['price'];
 }
 
 $ratingsLabels = $games->getRatings();
@@ -61,20 +62,20 @@ $ratingsLabels = $games->getRatings();
                                     </div>
                                     <div>
                                         <span>Editeur</span>
-                                        <select class="form-control mr-sm-2" id="editor" name="editor">
-                                        <option value="">Editor</option>
-                                        <?php
-                                        $editorsDatabase = $games->getEditors();
-                                        foreach ($editorsDatabase as $editorDatabase) :
-                                            $id = $editorDatabase[0];
-                                            $name = $editorDatabase[1];
-                                        ?>
-                                            <?php if ($editor && $name == $editor) : ?>
-                                                <option value="<?= "$id"; ?>" selected><?= "$name"; ?></option>
-                                            <?php else : ?>
-                                                <option value="<?= "$id"; ?>"><?= "$name"; ?></option>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
+                                        <select class="form-control mr-sm-2" id="editor" name="editor" required>
+                                            <option value="">Editor</option>
+                                            <?php
+                                            $editorsDatabase = $games->getEditors();
+                                            foreach ($editorsDatabase as $editorDatabase) :
+                                                $id = $editorDatabase[0];
+                                                $name = $editorDatabase[1];
+                                            ?>
+                                                <?php if ($editor && $id == $editor) : ?>
+                                                    <option value="<?= "$id"; ?>" selected><?= "$name"; ?></option>
+                                                <?php else : ?>
+                                                    <option value="<?= "$id"; ?>"><?= "$name"; ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
                                         </select>
 
                                     </div>
@@ -85,6 +86,10 @@ $ratingsLabels = $games->getRatings();
                                     <div>
                                         <span>Résumé</span>
                                         <textarea class="form-control" id="resume" name="resume" rows="3" required><?= $resume; ?></textarea>
+                                    </div>
+                                    <div>
+                                        <span>Prix en $</span>
+                                        <input type="number" class="form-control" name="price" placeholder="100" <?php if ($price) : ?> value="<?= $price ?>" <?php endif; ?> aria-label="priceOfTheGame" aria-describedby="basic-addon1" min="1" required>
                                     </div>
                                     <div>
                                         <span>Vidéo YouTube</span>
@@ -111,8 +116,9 @@ $ratingsLabels = $games->getRatings();
                                 <!-- Les boutons pour supprimer ou modifier le jeu -->
                                 <div>
                                     <button type="submit" class="btn btn-primary">
-                                        <?php if (empty($_POST)) : ?>
-                                            Ajouter <?php else : ?>
+                                        <?php if (empty($_GET['gameId'])) : ?>
+                                            Ajouter
+                                        <?php else : ?>
                                             Modifier
                                         <?php endif; ?>
                                     </button>
@@ -126,6 +132,7 @@ $ratingsLabels = $games->getRatings();
             </div>
         </div>
     </main>
+    <?php include "../includes/footer.php" ?>
 </body>
 
 </html>
