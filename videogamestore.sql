@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 30 juin 2024 à 04:37
+-- Généré le : lun. 01 juil. 2024 à 11:12
 -- Version du serveur : 10.11.6-MariaDB-0+deb12u1
 -- Version de PHP : 8.2.18
 
@@ -31,6 +31,42 @@ CREATE TABLE `editors` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `editors`
+--
+
+INSERT INTO `editors` (`id`, `name`) VALUES
+(1, 'Electronic Arts'),
+(2, 'Namco Bandai'),
+(3, 'Insomniac Games'),
+(4, 'EA Sports BIG'),
+(5, 'Visual Impact'),
+(6, 'Exient Entertainment'),
+(13, 'Nintendo'),
+(14, 'Sony'),
+(15, 'Microsoft'),
+(16, 'Activision'),
+(17, 'Ubisoft'),
+(18, 'Rockstar Games'),
+(19, 'Bethesda Softworks'),
+(20, 'Square Enix'),
+(21, 'Capcom'),
+(22, 'Konami'),
+(23, 'Sega'),
+(24, 'Bandai Namco Entertainment'),
+(25, 'Valve Corporation'),
+(26, 'Epic Games'),
+(27, 'Blizzard Entertainment'),
+(28, 'Take-Two Interactive'),
+(29, 'Embracer Group'),
+(30, 'Tencent Games'),
+(31, 'Riot Games'),
+(32, 'Bungie'),
+(33, 'Gearbox Software'),
+(34, 'Naughty Dog'),
+(35, 'Guerrilla Games'),
+(36, 'Sucker Punch Productions');
 
 -- --------------------------------------------------------
 
@@ -63,6 +99,17 @@ CREATE TABLE `ratings` (
   `rating` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `ratings`
+--
+
+INSERT INTO `ratings` (`id`, `rating`) VALUES
+(1, '3'),
+(2, '7'),
+(3, '12'),
+(4, '16'),
+(5, '18');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +137,13 @@ CREATE TABLE `users` (
   `dateOfCreation` date NOT NULL DEFAULT current_timestamp(),
   `userStatut` varchar(25) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `dateOfCreation`, `userStatut`) VALUES
+(1, 'admin', '$2y$10$q/K924Zw.EgCALg1N2Qqnu8Z6yjsqVodpDLWC/25e4KwZGrUaiK12', '2024-06-15', 'superadmin');
 
 --
 -- Index pour les tables déchargées
@@ -133,7 +187,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `editors`
 --
 ALTER TABLE `editors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT pour la table `games`
@@ -145,7 +199,7 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT pour la table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `shoppingCart`
@@ -157,7 +211,7 @@ ALTER TABLE `shoppingCart`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

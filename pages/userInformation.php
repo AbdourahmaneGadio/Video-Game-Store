@@ -1,9 +1,18 @@
 <?php
 include "../controllers/registerController.php";
+include "../controllers/userController.php";
 
 if (isset($_POST['updateAccount'])) {
     $register = new Register();
     $register->updateAccount();
+}
+
+if (isset($_GET['userId'])) {
+    $user = new User();
+    $userData = $user->getSingleUser($_GET['userId']);
+    $id = $userData['id'];
+    $username = $userData['username'];
+    $statut = $userData['userStatut'];
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +43,7 @@ if (isset($_POST['updateAccount'])) {
                         <?php endif; ?>
                         <!-- Username input -->
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="text" id="username" name="username" class="form-control" required />
+                            <input type="text" id="username" name="username" class="form-control" value="<?= $username ?>" required />
                             <label class="form-label" for="username">Username</label>
                         </div>
 
@@ -44,8 +53,22 @@ if (isset($_POST['updateAccount'])) {
                             <label class="form-label" for="password">Password</label>
                         </div>
 
+                        <!-- User statut -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <select class="form-control" id="statut" name="statut">
+                                <?php
+                                $userStatuts = array('User', 'Admin');
+                                foreach ($userStatuts as $userStatut) : ?>
+                                    <option value="<?= $userStatut ?>" <?php if (isset($statut) && $statut == $userStatut) : ?> selected <?php endif; ?>><?= $userStatut ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <label for="statut">User statut</label>
+                        </div>
+
                         <!-- Submit button -->
                         <button type="submit" name="updateAccount" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Update information</button>
+
+                        <input type="hidden" name="userId" value="<?= $id ?>">
                     </form>
                 </div>
             </div>
