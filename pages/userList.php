@@ -41,10 +41,10 @@ $usersDatabase = $userObject->getAllUsers();
                             <div> <span>Statut : <?= $statut ?></span></div>
 
                             <div>
-                                <a href="">
+                                <a href=<?= $ROOT_PATH . "/pages/userInformation.php?userId=" . $id ?>>
                                     <button type="button" class="btn btn-primary">Modifier</button>
                                 </a>
-                                <?php if (!$statut == "admin") : ?>
+                                <?php if ($statut != "superadmin") : ?>
                                     <a href=<?= "?deleteUser=1&userId=" . $id ?>>
                                         <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button>
                                     </a>

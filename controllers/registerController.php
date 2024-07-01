@@ -68,6 +68,9 @@ class Register extends Database
     // Check username AND password
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $statut = $_POST['statut'];
+    $id = $_POST['userId'];
+
     // If error, we redirect
     // Else, we go to the admin page
     // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
@@ -85,25 +88,25 @@ class Register extends Database
     $row = $result->fetch_assoc();
 
     // If the username is not taken, or if we only change the password
-    if ($stmt->num_rows == 0 || ($_SESSION['name'] = $row['username'] && $_SESSION['id'] == $row['id'])) {
+    if ($stmt->num_rows == 0 || ($_SESSION['admin'] == true || $_SESSION['name'] == $row['username'] && $id == $row['id'])) {
       $password = password_hash($password, PASSWORD_DEFAULT);
-      $stmt = $this->conn->prepare("UPDATE `users` SET `username`= ?,`password`= ? WHERE `id` = ?");
-      $stmt->bind_param('ssi', $username, $password, $_SESSION['id']);
+      $stmt = $this->conn->prepare("UPDATE `users` SET `username`= ?,`password`= ?, `userStatut`=? WHERE `id` = ?");
+      $stmt->bind_param('sssi', $username, $password, $statut, $id);
       $stmt->execute();
       // Verification success! User has logged-in!
       // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
       session_regenerate_id();
 
-      $_SESSION['name'] = $username;
+      // $_SESSION['name'] = $username;
 
       unset($_POST['updateAccount']);
 
-      $url = "../pages/userInformation.php?success=1";
+      $url = "../pages/userInformation.php?success=1&userId=" . $id;
       header('Location: ' . $url);
       exit();
     } else {
       // Username taken
-      $url = "../pages/userInformation.php?error=1";
+      $url = "../pages/userInformation.php?error=1&userId=" . $id;
       header('Location: ' . $url);
       exit();
     }

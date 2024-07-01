@@ -41,7 +41,7 @@ class Login extends Database
         // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
         session_regenerate_id();
         $_SESSION['loggedin'] = TRUE;
-        $_SESSION['admin'] = $userStatut == "admin";
+        $_SESSION['admin'] = $userStatut == "superadmin";
         $_SESSION['name'] = $username;
         $_SESSION['id'] = $id;
 
