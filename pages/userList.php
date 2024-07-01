@@ -1,6 +1,13 @@
 <?php
 require_once("../authenticate.php");
 require_once("../controllers/userController.php");
+require_once("../controllers/deleteController.php");
+
+if (isset($_GET['deleteUser']) && isset($_GET['userId'])) {
+    $delete = new Delete();
+    $delete->deleteUser($_GET['userId']);
+}
+
 $userObject = new User();
 $usersDatabase = $userObject->getAllUsers();
 ?>
@@ -33,13 +40,15 @@ $usersDatabase = $userObject->getAllUsers();
                             <div> <span>Created the <?= $dateOfCreation ?></span></div>
                             <div> <span>Statut : <?= $statut ?></span></div>
 
-                            <div> 
+                            <div>
                                 <a href="">
                                     <button type="button" class="btn btn-primary">Modifier</button>
                                 </a>
-                                <a href=""> 
-                                    <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button>
-                                </a>
+                                <?php if (!$statut == "admin") : ?>
+                                    <a href=<?= "?deleteUser=1&userId=" . $id ?>>
+                                        <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

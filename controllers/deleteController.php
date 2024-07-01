@@ -3,7 +3,7 @@
 
 
 
-require("../authenticate.php");
+// require_once("../authenticate.php");
 
 class Delete extends Database
 {
@@ -15,14 +15,13 @@ class Delete extends Database
     $this->conn = $this->connect();
   }
 
-  function deleteGame()
+  function deleteGame($id)
   {
-    $id = $_GET['gameId'];
 
     // If the game already exists
     if ($id != "") {
       $sql = "DELETE FROM `games` WHERE id = '$id'";
-      var_dump($sql);
+      // var_dump($sql);
       if ($this->conn->query($sql) === TRUE) {
         echo "Update succesfully !";
       } else {
@@ -30,14 +29,25 @@ class Delete extends Database
       }
     }
 
-    $url = "../index.php";
-    header("Location: " . $url);
-    exit();
+    // $url = "../index.php";
+    // header("Location: " . $url);
+    // exit();
+  }
+
+  function deleteUser($id){
+
+    // If the user already exists
+    if ($id != "") {
+      $sql = "DELETE FROM `users` WHERE id = '$id'";
+      // var_dump($sql);
+      if ($this->conn->query($sql) === TRUE) {
+        echo "Update succesfully !";
+      } else {
+        echo "Error: " . $sql . "<br>" . $this->conn->error;
+      }
+    }
   }
 
 
 }
-
-$delete = new Delete();
-$delete->deleteGame();
 ?>

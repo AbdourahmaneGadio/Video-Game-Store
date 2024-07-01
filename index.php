@@ -1,8 +1,9 @@
 <?php
 $ROOT_PATH = "http://localhost/Video-Game-Store";
-require("authenticate.php");
+require_once("authenticate.php");
 require_once("controllers/gamesController.php");
 require_once("controllers/cartController.php");
+require_once("controllers/deleteController.php");
 
 $games = new Games();
 $cart = new Cart();
@@ -15,6 +16,14 @@ if (isset($_SESSION['loggedin']) &&  $_SESSION['loggedin'] == false) {
         $_SESSION['admin'] = $_COOKIE['user_statut'];
         $_SESSION['id'] = $_COOKIE['user_id'];
     }
+}
+
+// If we want to delete a game
+if (isset($_GET['deleteGame']) && isset($_GET['gameId'])) {
+    $delete = new Delete();
+    $delete->deleteGame($_GET['gameId']);
+    unset($_POST['deleteGame']);
+    unset($_POST['gameId']);
 }
 
 // The search filters possible
@@ -44,6 +53,8 @@ if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
     unset($_POST['gameId']);
     unset($_POST['price']);
 }
+
+
 
 ?>
 
@@ -132,7 +143,7 @@ if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
 
                                     <a href=<?= $ROOT_PATH . "/pages/update.php?gameId=" . $id ?>>
                                         <button type="button" class="btn btn-primary">Modifier</button></a>
-                                    <a href=<?= $ROOT_PATH . "/controllers/deleteController.php?gameId=" . $id ?>>
+                                    <a href=<?="?deleteGame=1&gameId=" . $id ?>>
                                         <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
                                 <?php elseif ($reservation == 1) : ?>
                                     <button type="button" class="btn btn-primary">Jeu déjà réservé</button>
