@@ -31,10 +31,8 @@ class Update extends Database
 
     // If we changed the visual
     if (isset($_FILES['visual']) && $id != "") {
-      $ext = pathinfo($_FILES["visual"]["name"], PATHINFO_EXTENSION);
-      // $visual = $id . "." . $ext;
+      $visual = $id . "." . end(explode(".", $_FILES['visual']['name']));
     }
-    $visual = $_FILES["visual"]["name"];
 
     // If the game already exists
     if ($id != "") {

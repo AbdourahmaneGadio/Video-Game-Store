@@ -87,6 +87,8 @@ class Games extends Database
         $rating = $_GET['rating'];
         $year = $_GET['year'];
         $editor = $_GET['editor'];
+        $priceRangeMin = $_GET['priceRangeMin'];
+        $priceRangeMax = $_GET['priceRangeMax'];
 
         $sql = "SELECT * FROM `games` WHERE 1=1";
 
@@ -104,6 +106,14 @@ class Games extends Database
 
         if (!empty($editor)) {
             $sql .= " AND editor = '$editor'";
+        }
+
+        if (!empty($priceRangeMin)) {
+            $sql .= " AND price >= '$priceRangeMin'";
+        }
+
+        if (!empty($priceRangeMax)) {
+            $sql .= " AND price <= '$priceRangeMax'";
         }
 
         // Prepare our SQL, preparing the SQL statement will prevent SQL injection.

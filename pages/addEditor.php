@@ -17,14 +17,14 @@ require_once("../authenticate.php");
             <div class="row mt-5">
                 <div class="mx-auto col-5">
                     <form action="<?= $ROOT_PATH . "" ?>" method="POST">
-                        <?php if ($_GET['error']) : ?>
+                        <?php if (isset($_GET['error']) && $_GET['error']) : ?>
                             <div class="alert alert-danger" role="alert">
                                 <span>Error</span>
                             </div>
                         <?php endif; ?>
 
                         <div class="my-2">
-                            <textarea class="form-control" id="resume" name="resume" rows="3" placeholder="Add 1 editor per line" required><?= $resume; ?></textarea>
+                            <textarea class="form-control" id="resume" name="resume" rows="3" placeholder="Add 1 editor per line" required></textarea>
                         </div>
 
                         <!-- Submit button -->

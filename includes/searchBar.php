@@ -58,5 +58,15 @@ $games = new Games();
         <?php endif; ?>
 
     </div>
+    <div class="form-group mr-3">
+        <label for="priceRangeMin" class="form-label">Min price</label>
+        <span id="priceRangeMinValue"><?php if (isset($_GET['priceRangeMin'])): echo $_GET['priceRangeMin']; else: echo 1; endif;?></span>
+        <input type="range" name="priceRangeMin" class="form-range" min="1" max="100" <?php if (isset($_GET['priceRangeMin'])): ?> value="<?=$_GET['priceRangeMin'];?>" <?php else:?> value="1" <?php endif;?> id="priceRangeMin">
+    </div>
+    <div class="form-group mr-3">
+        <label for="priceRangeMax" class="form-label">Max price</label>
+        <span id="priceRangeMaxValue"><?php if (isset($_GET['priceRangeMax'])): echo $_GET['priceRangeMax']; else: echo 100; endif;?></span>
+        <input type="range" name="priceRangeMax" class="form-range" min="2" max="100" <?php if (isset($_GET['priceRangeMax'])): ?> value="<?=$_GET['priceRangeMax'];?>" <?php else:?> value="100" <?php endif;?> id="priceRangeMax">
+    </div>
     <button type="submit" class="btn btn-primary mt-2">Search</button>
 </form>

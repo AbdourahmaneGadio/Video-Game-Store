@@ -5,7 +5,7 @@ require_once("../controllers/gamesController.php");
 
 $games = new Games();
 
-if ($_GET['gameId'] != "") {
+if (isset($_GET['gameId']) && $_GET['gameId'] != "") {
     $gameId = $_GET['gameId'];
     $singleGame = $games->getSingleGame($gameId);
     $id = $singleGame['id'];
@@ -45,8 +45,13 @@ $ratingsLabels = $games->getRatings();
 
                             <!-- Les informations du jeu -->
                             <div class="col-4">
-                                <input type="hidden" name="gameId" value=<?= $gameId ?>>
-                                <img src=<?= $ROOT_PATH . "/uploads/games/" . $visual; ?> class="img-fluid rounded my-2" alt="Game's visual">
+                                <?php if (isset($gameId)) : ?>
+                                    <input type="hidden" name="gameId" value=<?= $gameId ?>>
+                                <?php endif; ?>
+                                <?php if (isset($visual)) : ?>
+                                    <img src=<?= $ROOT_PATH . "/uploads/games/" . $visual; ?> class="img-fluid rounded my-2" alt="Game's visual">
+                                <?php endif; ?>
+
                                 <div class="mb-3">
                                     <label for="formFileSm" class="form-label">Small file input example</label>
                                     <input type="file" class="form-control form-control-sm" id="visual" name="visual" accept="image/png, image/jpeg" <?php if (!isset($id)) : ?> required="true" <?php endif; ?>>
@@ -58,7 +63,7 @@ $ratingsLabels = $games->getRatings();
                                 <div class="row">
                                     <div>
                                         <span>Titre du jeu</span>
-                                        <input type="text" class="form-control" name="title" placeholder="Title" <?php if ($title) : ?> value="<?= htmlspecialchars($title) ?>" <?php endif; ?> required>
+                                        <input type="text" class="form-control" name="title" placeholder="Title" <?php if (isset($title)) : ?> value="<?= htmlspecialchars($title) ?>" <?php endif; ?> required>
                                     </div>
                                     <div>
                                         <span>Editeur</span>
@@ -81,19 +86,19 @@ $ratingsLabels = $games->getRatings();
                                     </div>
                                     <div>
                                         <span>Année de parution</span>
-                                        <input type="number" class="form-control" name="year" placeholder="2024" <?php if ($year) : ?> value="<?= $year ?>" <?php endif; ?> aria-label="yearOfPublication" aria-describedby="basic-addon1" min="1975" required>
+                                        <input type="number" class="form-control" name="year" placeholder="2024" <?php if (isset($year)) : ?> value="<?= $year ?>" <?php endif; ?> aria-label="yearOfPublication" aria-describedby="basic-addon1" min="1975" required>
                                     </div>
                                     <div>
                                         <span>Résumé</span>
-                                        <textarea class="form-control" id="resume" name="resume" rows="3" required><?= $resume; ?></textarea>
+                                        <textarea class="form-control" id="resume" name="resume" rows="3" required><?php if (isset($resume)): echo $resume; endif ?></textarea>
                                     </div>
                                     <div>
                                         <span>Prix en $</span>
-                                        <input type="number" class="form-control" name="price" placeholder="100" <?php if ($price) : ?> value="<?= $price ?>" <?php endif; ?> aria-label="priceOfTheGame" aria-describedby="basic-addon1" min="1" required>
+                                        <input type="number" class="form-control" name="price" placeholder="100" <?php if (isset($price)) : ?> value="<?= $price ?>" <?php endif; ?> aria-label="priceOfTheGame" aria-describedby="basic-addon1" min="1" required>
                                     </div>
                                     <div>
                                         <span>Vidéo YouTube</span>
-                                        <input type="text" class="form-control" name="video" placeholder="https://www.youtube.com/watch?v=sfbMHbFiN08" <?php if ($video) : ?> value=<?= "$video" ?> <?php endif; ?> required>
+                                        <input type="text" class="form-control" name="video" placeholder="https://www.youtube.com/watch?v=sfbMHbFiN08" <?php if (isset($video)) : ?> value=<?= "$video" ?> <?php endif; ?> required>
                                     </div>
                                     <div class="my-3">
                                         <span>Rating</span>
