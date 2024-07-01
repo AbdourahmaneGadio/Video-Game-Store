@@ -30,7 +30,7 @@ class Update extends Database
     $id = $_POST['gameId'];
 
     // If we changed the visual
-    if (isset($_FILES['visual']) && $id != "") {
+    if (isset($_FILES['visual']['name']) && !empty($_FILES['visual']['name'])) {
       $visual = $id . "." . end(explode(".", $_FILES['visual']['name']));
     }
 
