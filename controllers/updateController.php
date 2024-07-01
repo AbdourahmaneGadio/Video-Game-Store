@@ -26,14 +26,13 @@ class Update extends Database
     $rating = $_POST['rating'];
     $video = $_POST['video'];
     $video = $this->convertYouTubeUrlToEmbedCode($video);
+    $price = $_POST['price'];
     $id = $_POST['gameId'];
 
     // If we changed the visual
-    if (isset($_FILES['visual']) && $id != "") {
-      $ext = pathinfo($_FILES["visual"]["name"], PATHINFO_EXTENSION);
-      // $visual = $id . "." . $ext;
+    if (isset($_FILES['visual']['name']) && !empty($_FILES['visual']['name'])) {
+      $visual = $id . "." . end(explode(".", $_FILES['visual']['name']));
     }
-    $visual = $_FILES["visual"]["name"];
 
     // If the game already exists
     if ($id != "") {
@@ -42,7 +41,7 @@ class Update extends Database
         $sql .= "`visual`='$visual', ";
       }
 
-      $sql .= "`resume`='$resume',`rating`='$rating',`year`='$year',`title`='$title',`editor`='$editor', `video`='$video' WHERE id = '$id'";
+      $sql .= "`resume`='$resume',`rating`='$rating',`year`='$year',`title`='$title',`editor`='$editor', `video`='$video', `price`='$price' WHERE id = '$id'";
       if ($this->conn->query($sql) === TRUE) {
         echo "Update succesfully !";
       } else {
@@ -53,7 +52,7 @@ class Update extends Database
     // New game
     else {
 
-      $sql = "INSERT INTO `games` (`visual`, `resume`, `rating`, `year`, `title`, `editor`, `video`) VALUES ('$visual', '$resume', '$rating', '$year', '$title', '$editor', '$video') ";
+      $sql = "INSERT INTO `games` (`visual`, `resume`, `rating`, `year`, `title`, `editor`, `video`, `price`) VALUES ('$visual', '$resume', '$rating', '$year', '$title', '$editor', '$video', '$price') ";
       if ($this->conn->query($sql) === TRUE) {
         echo "New record created successfully";
       } else {

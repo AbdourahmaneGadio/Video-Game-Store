@@ -1,19 +1,5 @@
-.blur-background {
-    /* The image used */
-    background-image: url("http://127.0.0.1:3000/assets/images/53063.jpg");
-
-    /* Add the blur effect */
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    z-index: -1;
-    position: relative;
-    height: 350px;
+a{
+    text-decoration: none;
 }
 
 #needHelpButton {

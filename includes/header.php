@@ -1,8 +1,8 @@
 <?php $ROOT_PATH = "http://localhost/Video-Game-Store" ?>
 
-<header>
+<header class="sticky-top">
     <nav class="navbar navbar-expand-lg bg-body">
-        <div class="container-fluid p-4">
+        <div class="container-fluid p-4 bg-info-subtle">
 
             <a class="navbar-brand" href=<?= $ROOT_PATH . "/index.php" ?>>
                 <img src=<?= $ROOT_PATH . "/assets/images/mainLogo.png" ?> style="width: 70px;" alt="Video Game Store">
@@ -17,7 +17,10 @@
                     <?php if (isset($_SESSION['loggedin']) && ($_SESSION['loggedin']) == TRUE) : ?>
                         <?php if ($_SESSION['admin'] == FALSE) : ?>
                             <li class="nav-item my-auto">
-                                <span class="fa-light fa-cart-shopping"></span>
+                            <a href=<?= $ROOT_PATH . "/pages/cartList.php" ?>>
+                                <span>Voir le panier</span>
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </a>
                             </li>
                         <?php endif; ?>
                         <span class="mx-2 my-auto">Welcome <?= $_SESSION['name'] ?> !</span>
@@ -31,6 +34,17 @@
                                     <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/addEditor.php" ?>>Add editor</a></li>
                                     <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userList.php" ?>>Manage users</a></li>
                                     <li> <a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/update.php" ?>>Add a game</a></li>
+                                </ul>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Settings
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userInformation.php" ?>>Account information</a></li>
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userRental.php" ?>>Rental history</a></li>
                                 </ul>
                             </li>
                         <?php endif; ?>

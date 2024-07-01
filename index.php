@@ -1,11 +1,15 @@
 <?php
 $ROOT_PATH = "http://localhost/Video-Game-Store";
-require("authenticate.php");
+require_once("authenticate.php");
 require_once("controllers/gamesController.php");
+require_once("controllers/cartController.php");
+require_once("controllers/deleteController.php");
+
 $games = new Games();
+$cart = new Cart();
 
 // If rememberme checked
-if ($_SESSION['loggedin'] == false) {
+if (isset($_SESSION['loggedin']) &&  $_SESSION['loggedin'] == false) {
     if (isset($_COOKIE['user_login']) && $_COOKIE['user_login'] != "") {
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $_COOKIE['user_login'];
@@ -14,11 +18,22 @@ if ($_SESSION['loggedin'] == false) {
     }
 }
 
+// If we want to delete a game
+if (isset($_GET['deleteGame']) && isset($_GET['gameId'])) {
+    $delete = new Delete();
+    $delete->deleteGame($_GET['gameId']);
+    unset($_POST['deleteGame']);
+    unset($_POST['gameId']);
+}
+
+// The search filters possible
 $get_vars = array('rating', 'year', 'editor', 'name');
 
 $set_vars = false;
 
 foreach ($get_vars as $var) {
+
+    // If we have at least one filter active
     if (isset($_GET[$var])) {
         $set_vars = true;
         $gamesList = $games->searchGame();
@@ -26,9 +41,20 @@ foreach ($get_vars as $var) {
     }
 }
 
+// If no filter is active
 if ($set_vars == false) {
     $gamesList = $games->getAllGames();
 }
+
+// If we want to add a game
+if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
+    $cart->addGameToCart();
+    unset($_POST['addGameToCart']);
+    unset($_POST['gameId']);
+    unset($_POST['price']);
+}
+
+
 
 ?>
 
@@ -61,17 +87,18 @@ if ($set_vars == false) {
                     $editor = $editor['name'];
                     $video = $game[7];
                     $reservation = $game[8];
+                    $price = $game[10];
                 ?>
                     <div class="row p-3 rounded bg-info-subtle mb-3">
                         <div id="ligneJeu" class="row">
                             <!-- Les informations du jeu -->
-                            <div class="col-3 my-auto">
+                            <div class="col-sm-3 my-auto">
                                 <img src=<?= $ROOT_PATH . "/uploads/games/" . $visual; ?> class="img-fluid rounded" alt="Game's visual">
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-5">
                                 <div class="row">
                                     <div>
-                                        <span class="display-6"><?= $title ?></span>
+                                        <span class="display-6"><?= $title . " - " . $price . "$"; ?></span>
                                     </div>
                                     <div class="my-2"> <span class="text-body-secondary"><?= $editor ?></span> <span> - </span>
                                         <span class="text-body-secondary"><?= $year ?></span>
@@ -80,7 +107,7 @@ if ($set_vars == false) {
                                         <p class="lead"><?= $resume ?></p>
                                     </div>
                                     <div class="mt-3">
-                                        <div class="col-2">
+                                        <div class="col-sm-2">
                                             <img src=<?= $ROOT_PATH . "/assets/images/pegi/pegi-" . $rating . ".png" ?> class="img-fluid" alt="Rating">
                                         </div>
                                     </div>
@@ -89,7 +116,7 @@ if ($set_vars == false) {
                                 </div>
                             </div>
 
-                            <div class="col-3 my-auto">
+                            <div class="col-sm-3 my-auto">
 
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src=<?= $video ?> allowfullscreen></iframe>
@@ -98,31 +125,37 @@ if ($set_vars == false) {
 
                         </div>
                         <!-- Zone pour emprunter -->
-                        <div class="input-group my-3">
+                        <!-- <div class="input-group my-3">
                             <span class="input-group-text" id="basic-addon1">Nom</span>
                             <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
+                        </div> -->
 
                         <!-- Les informations de l'emprunt -->
-                        <div class="my-2">
+                        <!-- <div class="my-2">
                             <span>Client A</span>
                             <span>13 juin 2024 - 14:07</span>
-                        </div>
+                        </div> -->
 
                         <!-- Les boutons pour réserver ou retourner un jeu -->
                         <div class="my-2">
-                            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == TRUE) : ?>
+                            <form action="" method="post">
+                                <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == TRUE) : ?>
 
-                                <a href=<?= $ROOT_PATH . "/pages/update.php?gameId=" . $id ?>>
-                                    <button type="button" class="btn btn-primary">Modifier</button></a>
-                                <a href=<?= $ROOT_PATH ."/controllers/deleteController.php?gameId=" . $id ?>>
-                                    <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
-                            <?php elseif ($reservation == 1) : ?>
-                                <button type="button" class="btn btn-primary">Retour</button>
-                            <?php else : ?>
-                                <button type="button" class="btn btn-primary">Réserver</button>
+                                    <a href=<?= $ROOT_PATH . "/pages/update.php?gameId=" . $id ?>>
+                                        <button type="button" class="btn btn-primary">Modifier</button></a>
+                                    <a href=<?="?deleteGame=1&gameId=" . $id ?>>
+                                        <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
+                                <?php elseif ($reservation == 1) : ?>
+                                    <button type="button" class="btn btn-primary">Jeu déjà réservé</button>
+                                <?php elseif (isset($_SESSION['loggedin']) && $cart->gameAlreadyCart($id) == false) : ?>
+                                    <button type="submit" name="addGameToCart" class="btn btn-primary">Réserver</button>
+                                    <input type="hidden" name="gameId" value="<?= $id ?>">
+                                    <input type="hidden" name="price" value="<?= $price ?>">
+                                <?php else : ?>
+                                    <button type="button" class="btn btn-primary opacity-25" disabled>Réserver</button>
 
-                            <?php endif; ?>
+                                <?php endif; ?>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -130,7 +163,7 @@ if ($set_vars == false) {
                 <!-- Si aucun jeu -->
             <?php else : ?>
                 <div class="alert alert-info" role="alert">
-                <span>Aucun jeu n'est actuellement disponible dans la boutique.</span>
+                    <span>No games found</span>
                 </div>
             <?php endif; ?>
 

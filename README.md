@@ -77,15 +77,15 @@ User Functionalities:
 
 2. **Game Details and Availability**:
    - Display detailed information about each game, including screenshots, ~~trailers, descriptions,~~ ratings, and reviews.
-   - Show the availability status of each game (in-stock, rented out, etc.) and the rental price.
+   - ~~Show the availability status of each game (in-stock, rented out, etc.) and the rental price.~~
 
 3. **Rent and Return Games**:
-   - Enable users to rent video games by adding them to a cart and completing the rental process.
+   - Enable users to rent video games by ~~adding them to a cart~~ and completing the rental process.
    - Allow users to return rented games and track their rental history.
 
 4. **User Accounts and Profiles**:
    - ~~Provide user registration and login functionality.~~
-   - Allow users to manage their account information, rental history, and payment methods.
+   - Allow users to manage their ~~account information,~~ rental history, and payment methods.
    - Implement features like wish lists, game recommendations, and rental reminders.
 
 5. **Ratings and Reviews**:
@@ -105,14 +105,14 @@ Administrator Functionalities:
 
 2. **User Management**:
    - Provide an admin dashboard to view and manage user accounts, including their rental history and profiles.
-   - Implement user roles and permissions (e.g., regular users, premium users, administrators).
+   ~~- Implement user roles and permissions (e.g., regular users, premium users, administrators).~~
 
 3. **Rental Management**:
    - Monitor and manage ongoing rentals, including overdue returns and late fees.
    - Generate reports on rental trends, popular games, and revenue.
 
 4. **Pricing and Promotions**:
-   - Set and update rental prices for different games and user tiers.
+   - ~~Set and update rental prices for different games and user tiers.~~
    - Create and manage promotional offers, discounts, and subscription plans.
 
 5. **Customer Support**:

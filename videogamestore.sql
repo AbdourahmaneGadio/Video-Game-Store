@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 27 juin 2024 à 02:38
+-- Généré le : lun. 01 juil. 2024 à 11:12
 -- Version du serveur : 10.11.6-MariaDB-0+deb12u1
 -- Version de PHP : 8.2.18
 
@@ -84,15 +84,9 @@ CREATE TABLE `games` (
   `editor` varchar(255) NOT NULL,
   `video` varchar(255) DEFAULT NULL,
   `reservationState` tinyint(1) NOT NULL DEFAULT 0,
-  `dateOfCreation` date NOT NULL DEFAULT current_timestamp()
+  `dateOfCreation` date NOT NULL DEFAULT current_timestamp(),
+  `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `games`
---
-
-INSERT INTO `games` (`id`, `visual`, `resume`, `rating`, `year`, `title`, `editor`, `video`, `reservationState`, `dateOfCreation`) VALUES
-(35, '', 'NBA Street Vol. 2 is a basketball video game developed by NuFX and EA Canada and published by Electronic Arts under the EA Sports BIG label. It is the sequel to NBA Street and the second installment in the NBA Street series. NBA Street Vol. 2 was released on April 29, 2003, for the PlayStation 2, GameCube, and Xbox. Only the PlayStation 2 version was released in Japan; the GameCube version was planned for release in that region, but was cancelled. It was followed by NBA Street V3.', '1', 2003, 'NBA Street VOL.2', '4', 'https://www.youtube.com/embed/fp7EIy_DUoU', 0, '2024-06-23');
 
 -- --------------------------------------------------------
 
@@ -119,6 +113,20 @@ INSERT INTO `ratings` (`id`, `rating`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `shoppingCart`
+--
+
+CREATE TABLE `shoppingCart` (
+  `id` int(11) NOT NULL,
+  `gameId` int(11) NOT NULL,
+  `dateOfAdd` date NOT NULL DEFAULT current_timestamp(),
+  `price` int(11) NOT NULL,
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
@@ -135,11 +143,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `dateOfCreation`, `userStatut`) VALUES
-(1, 'admin', '$2y$10$n/cSkxuACIP9i5dzeXJBF.RgOD384aGC9kKjIm/D5Ii61BABgF4ES', '2024-06-15', 'admin'),
-(2, 'a', '$2y$10$ncbtl7IW/WSYu2QqTTP3RuDDXkjdhR2mbBZVn/axDVUrKUyN55gai', '2024-06-24', 'user'),
-(3, 'b', '$2y$10$TQe5tg3YEF0AFwQKwy59uu5CBPgYu.qucegV6mXSdpre5wQOOSwqW', '2024-06-24', 'user'),
-(4, 'a@gmail.com', '$2y$10$4E3.7WMS0VG.JWQuuqQtWuRxSbnQaLr0M30708I9hhvDnJ6r8Wd1u', '2024-06-24', 'user'),
-(5, 'c', '$2y$10$6HJ2gbLOT3.FhrKJV0LNj.chEdpAQnF9cBcT8uYqSIuLm8.mOU3oa', '2024-06-25', 'user');
+(1, 'admin', '$2y$10$q/K924Zw.EgCALg1N2Qqnu8Z6yjsqVodpDLWC/25e4KwZGrUaiK12', '2024-06-15', 'superadmin');
 
 --
 -- Index pour les tables déchargées
@@ -164,6 +168,12 @@ ALTER TABLE `ratings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `shoppingCart`
+--
+ALTER TABLE `shoppingCart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -183,7 +193,7 @@ ALTER TABLE `editors`
 -- AUTO_INCREMENT pour la table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `ratings`
@@ -192,10 +202,16 @@ ALTER TABLE `ratings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT pour la table `shoppingCart`
+--
+ALTER TABLE `shoppingCart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
