@@ -93,7 +93,7 @@ class Games extends Database
         $sql = "SELECT * FROM `games` WHERE 1=1";
 
         if (!empty($title)) {
-            $sql .= " AND title = '$title'";
+            $sql .= " AND title LIKE '%$title%'";
         }
 
         if (!empty($rating)) {

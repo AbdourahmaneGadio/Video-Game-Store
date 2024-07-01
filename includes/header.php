@@ -43,7 +43,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userInformation.php" ?>>Account information</a></li>
+                                    <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userInformation.php?userId=" . $_SESSION['id'] ?>>Account information</a></li>
                                     <li><a class="dropdown-item" href=<?= $ROOT_PATH . "/pages/userRental.php" ?>>Rental history</a></li>
                                 </ul>
                             </li>

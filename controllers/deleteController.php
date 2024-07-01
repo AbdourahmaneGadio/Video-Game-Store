@@ -22,8 +22,8 @@ class Delete extends Database
     if ($id != "") {
       $sql = "DELETE FROM `games` WHERE id = '$id'";
       // var_dump($sql);
-      if ($this->conn->query($sql) === TRUE) {
-        echo "Update succesfully !";
+      if ($stmt = $this->conn->prepare($sql)) {
+        $stmt->execute();
       } else {
         echo "Error: " . $sql . "<br>" . $this->conn->error;
       }
@@ -40,8 +40,8 @@ class Delete extends Database
     if ($id != "") {
       $sql = "DELETE FROM `users` WHERE id = '$id'";
       // var_dump($sql);
-      if ($this->conn->query($sql) === TRUE) {
-        echo "Update succesfully !";
+      if ($stmt = $this->conn->prepare($sql)) {
+        $stmt->execute();
       } else {
         echo "Error: " . $sql . "<br>" . $this->conn->error;
       }
