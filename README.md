@@ -105,7 +105,7 @@ Administrator Functionalities:
 
 2. **User Management**:
    - Provide an admin dashboard to view and manage user accounts, including their rental history and profiles.
-   - Implement user roles and permissions (e.g., regular users, premium users, administrators).
+   ~~- Implement user roles and permissions (e.g., regular users, premium users, administrators).~~
 
 3. **Rental Management**:
    - Monitor and manage ongoing rentals, including overdue returns and late fees.
