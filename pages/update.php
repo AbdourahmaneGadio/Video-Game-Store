@@ -44,7 +44,7 @@ $ratingsLabels = $games->getRatings();
                         <div id="ligneJeu" class="row">
 
                             <!-- Les informations du jeu -->
-                            <div class="col-4">
+                            <div class="col-sm-4">
                                 <?php if (isset($gameId)) : ?>
                                     <input type="hidden" name="gameId" value=<?= $gameId ?>>
                                 <?php endif; ?>
@@ -59,7 +59,7 @@ $ratingsLabels = $games->getRatings();
 
 
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-6">
                                 <div class="row">
                                     <div>
                                         <span>Titre du jeu</span>

@@ -39,7 +39,7 @@ $games = new Games();
                 ?>
                     <form action="" method="post">
                         <div class="row mt-5">
-                            <div class="col-6 mx-auto">
+                            <div class="col-sm-6 mx-auto">
                                 <div>
                                     <span><?= $title ?></span>
                                 </div>

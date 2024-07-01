@@ -92,10 +92,10 @@ if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
                     <div class="row p-3 rounded bg-info-subtle mb-3">
                         <div id="ligneJeu" class="row">
                             <!-- Les informations du jeu -->
-                            <div class="col-3 my-auto">
+                            <div class="col-sm-3 my-auto">
                                 <img src=<?= $ROOT_PATH . "/uploads/games/" . $visual; ?> class="img-fluid rounded" alt="Game's visual">
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-5">
                                 <div class="row">
                                     <div>
                                         <span class="display-6"><?= $title . " - " . $price . "$"; ?></span>
@@ -107,7 +107,7 @@ if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
                                         <p class="lead"><?= $resume ?></p>
                                     </div>
                                     <div class="mt-3">
-                                        <div class="col-2">
+                                        <div class="col-sm-2">
                                             <img src=<?= $ROOT_PATH . "/assets/images/pegi/pegi-" . $rating . ".png" ?> class="img-fluid" alt="Rating">
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@ if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
                                 </div>
                             </div>
 
-                            <div class="col-3 my-auto">
+                            <div class="col-sm-3 my-auto">
 
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src=<?= $video ?> allowfullscreen></iframe>
