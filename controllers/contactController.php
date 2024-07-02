@@ -1,6 +1,6 @@
 <?php
 $ROOT_PATH = "http://localhost/Video-Game-Store";
-require_once($ROOT_PATH . "/authenticate.php");
+// require_once("../authenticate.php");
 
 class Contact extends Database
 {
@@ -48,12 +48,7 @@ class Contact extends Database
                 $stmt->close();
             }
         }
-    }
-}
 
-$contact = new Contact();
-// If we want to send a message via the form
-if (isset($_POST['frmContact'])) {
-    $contact->validateAndSendMail();
-    unset($_POST['frmContact']);
+        return array($message, $type);
+    }
 }

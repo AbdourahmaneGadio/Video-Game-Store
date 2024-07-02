@@ -1,3 +1,17 @@
+<?php
+require_once("controllers/contactController.php");
+
+// If we want to send a message via the form
+if (isset($_POST['send'])) {
+    $contact = new Contact();
+   $result= $contact->validateAndSendMail();
+   $message = $result[0];
+   $type = $result[1];
+    unset($_POST['send']);
+}
+
+?>
+
 <footer>
     <div class="container-fluid">
         @ 2024 - KMUTT Project
@@ -10,7 +24,7 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="form-container">
-            <form name="frmContact" id="frmContact" method="post" action="<?=$ROOT_PATH . "/controllers/contactController.php"?>" enctype="multipart/form-data" onsubmit="return validateContactForm()">
+            <form name="frmContact" id="frmContact" method="post" action="" onsubmit="return validateContactForm()">
                 <div class="input-row">
                     <label>Name</label> <span id="userName-info" class="info"></span><br />
                     <input type="text" class="input-field" name="userName" id="userName" />
@@ -31,7 +45,7 @@
                     <input type="submit" name="send" class="btn-submit" value="Send" />
                     <!-- Sent if the message is not empty -->
                     <div id="statusMessage">
-                        <?php if (!empty($message)) { ?>
+                        <?php if (isset($message) && !empty($message)) { ?>
                             <p class='<?php echo $type; ?>Message'><?php echo $message; ?></p>
                         <?php } ?>
                     </div>
