@@ -4,6 +4,7 @@ require_once("authenticate.php");
 require_once("controllers/gamesController.php");
 require_once("controllers/cartController.php");
 require_once("controllers/deleteController.php");
+require_once("controllers/contactController.php");
 
 $games = new Games();
 $cart = new Cart();
