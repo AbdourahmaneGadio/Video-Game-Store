@@ -18,7 +18,7 @@
                         <?php if ($_SESSION['admin'] == FALSE) : ?>
                             <li class="nav-item my-auto">
                             <a href=<?= $ROOT_PATH . "/pages/cartList.php" ?>>
-                                <span>Voir le panier</span>
+                                <span>Shopping Cart</span>
                                 <i class="fa-solid fa-basket-shopping"></i>
                             </a>
                             </li>

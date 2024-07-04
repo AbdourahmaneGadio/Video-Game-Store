@@ -4,6 +4,7 @@ require_once("authenticate.php");
 require_once("controllers/gamesController.php");
 require_once("controllers/cartController.php");
 require_once("controllers/deleteController.php");
+require_once("controllers/contactController.php");
 
 $games = new Games();
 $cart = new Cart();
@@ -142,17 +143,17 @@ if (isset($_POST['addGameToCart']) && isset($_POST['gameId'])) {
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == TRUE) : ?>
 
                                     <a href=<?= $ROOT_PATH . "/pages/update.php?gameId=" . $id ?>>
-                                        <button type="button" class="btn btn-primary">Modifier</button></a>
+                                        <button type="button" class="btn btn-primary">Modify</button></a>
                                     <a href=<?="?deleteGame=1&gameId=" . $id ?>>
-                                        <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
+                                        <button type="button" class="btn btn-danger" onclick="return deleteGameAlert();">Delete</button></a>
                                 <?php elseif ($reservation == 1) : ?>
                                     <button type="button" class="btn btn-primary">Jeu déjà réservé</button>
                                 <?php elseif (isset($_SESSION['loggedin']) && $cart->gameAlreadyCart($id) == false) : ?>
-                                    <button type="submit" name="addGameToCart" class="btn btn-primary">Réserver</button>
+                                    <button type="submit" name="addGameToCart" class="btn btn-primary">Rent</button>
                                     <input type="hidden" name="gameId" value="<?= $id ?>">
                                     <input type="hidden" name="price" value="<?= $price ?>">
                                 <?php else : ?>
-                                    <button type="button" class="btn btn-primary opacity-25" disabled>Réserver</button>
+                                    <button type="button" class="btn btn-primary opacity-25" disabled>Rent</button>
 
                                 <?php endif; ?>
                             </form>

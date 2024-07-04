@@ -49,7 +49,7 @@ $games = new Games();
                             </div>
                             <div class="col-sm-2 my-auto">
                                 <div class="my-2">
-                                    <button name="deleteGameFromCart" value="<?= $id ?>" type="submit" class="btn btn-danger" onclick="return deleteGameAlert();">Supprimer</button></a>
+                                    <button name="deleteGameFromCart" value="<?= $id ?>" type="submit" class="btn btn-danger" onclick="return deleteGameAlert();">Delete</button></a>
                                 </div>
                             </div>
                         </div>

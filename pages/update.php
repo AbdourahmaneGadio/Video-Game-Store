@@ -62,11 +62,11 @@ $ratingsLabels = $games->getRatings();
                             <div class="col-sm-6">
                                 <div class="row">
                                     <div>
-                                        <span>Titre du jeu</span>
+                                        <span>Game's title</span>
                                         <input type="text" class="form-control" name="title" placeholder="Title" <?php if (isset($title)) : ?> value="<?= htmlspecialchars($title) ?>" <?php endif; ?> required>
                                     </div>
                                     <div>
-                                        <span>Editeur</span>
+                                        <span>Editor</span>
                                         <select class="form-control mr-sm-2" id="editor" name="editor" required>
                                             <option value="">Editor</option>
                                             <?php
@@ -85,23 +85,23 @@ $ratingsLabels = $games->getRatings();
 
                                     </div>
                                     <div>
-                                        <span>Année de parution</span>
+                                        <span>Year of publication</span>
                                         <input type="number" class="form-control" name="year" placeholder="2024" <?php if (isset($year)) : ?> value="<?= $year ?>" <?php endif; ?> aria-label="yearOfPublication" aria-describedby="basic-addon1" min="1975" required>
                                     </div>
                                     <div>
-                                        <span>Résumé</span>
+                                        <span>Description</span>
                                         <textarea class="form-control" id="resume" name="resume" rows="3" required><?php if (isset($resume)): echo $resume; endif ?></textarea>
                                     </div>
                                     <div>
-                                        <span>Prix en $</span>
+                                        <span>Price in $</span>
                                         <input type="number" class="form-control" name="price" placeholder="100" <?php if (isset($price)) : ?> value="<?= $price ?>" <?php endif; ?> aria-label="priceOfTheGame" aria-describedby="basic-addon1" min="1" required>
                                     </div>
                                     <div>
-                                        <span>Vidéo YouTube</span>
+                                        <span>Youtube Link</span>
                                         <input type="text" class="form-control" name="video" placeholder="https://www.youtube.com/watch?v=sfbMHbFiN08" <?php if (isset($video)) : ?> value=<?= "$video" ?> <?php endif; ?> required>
                                     </div>
                                     <div class="my-3">
-                                        <span>Rating</span>
+                                        <span>PEGI</span>
                                         <select name="rating" id="rating" required>
                                             <?php foreach ($ratingsLabels as $ratingLabel) :
                                                 $ratingId = $ratingLabel[0];
@@ -118,13 +118,13 @@ $ratingsLabels = $games->getRatings();
                                     </div>
                                 </div>
 
-                                <!-- Les boutons pour supprimer ou modifier le jeu -->
+                                <!-- Les boutons pour Delete ou modifier le jeu -->
                                 <div>
                                     <button type="submit" class="btn btn-primary">
                                         <?php if (empty($_GET['gameId'])) : ?>
-                                            Ajouter
+                                            Add
                                         <?php else : ?>
-                                            Modifier
+                                            Modify
                                         <?php endif; ?>
                                     </button>
                                 </div>

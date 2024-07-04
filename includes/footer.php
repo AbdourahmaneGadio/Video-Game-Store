@@ -1,5 +1,5 @@
 <?php
-require_once("controllers/contactController.php");
+// require_once("../controllers/contactController.php");
 
 // If we want to send a message via the form
 if (isset($_POST['send'])) {

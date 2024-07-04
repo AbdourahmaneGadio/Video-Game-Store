@@ -50,11 +50,11 @@ $games = new Games();
         </select>
     </div>
     <div class="form-group mr-3">
-        <label for="title">Game Name:</label>
+        <label for="title">Game's Name:</label>
         <?php if (isset($_GET['title'])) : $title = $_GET['title']; ?>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter game name" value="<?= $title ?>">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter game's name" value="<?= $title ?>">
         <?php else : ?>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Enter game name">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter game's name">
         <?php endif; ?>
 
     </div>
